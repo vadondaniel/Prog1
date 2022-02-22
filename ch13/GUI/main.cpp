@@ -73,7 +73,6 @@ int main()
     win.attach(i2);
     win.attach(i3);
 
-
     for (size_t i = 0; i < 10; i++)
     {
         move_x = rand() % 8;
