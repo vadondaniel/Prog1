@@ -54,8 +54,8 @@ class D22 : public B2{
         }
 };
 
-void f(B2& b){
-    b.pvf();
+void f(B2& b_ref){
+    b_ref.pvf();
 };
 
 int main() {
