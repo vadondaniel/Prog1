@@ -86,5 +86,6 @@ int main() {
     D22 object_d22;
     f(object_d22);
 
+
     return 0;
 }
