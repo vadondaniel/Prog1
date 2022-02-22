@@ -75,7 +75,6 @@ int main()
     //win.attach(mover);
 
 
-
     for (size_t i = 0; i < 10; i++)
     {
         move_x = rand() % 8;
