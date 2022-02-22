@@ -72,7 +72,6 @@ int main()
     win.attach(i1);
     win.attach(i2);
     win.attach(i3);
-    //win.attach(mover);
 
 
     for (size_t i = 0; i < 10; i++)
