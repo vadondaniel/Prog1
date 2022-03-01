@@ -4,7 +4,6 @@
 // g++ main.cpp Graph.cpp Window.cpp GUI.cpp Simple_window.cpp -o main `fltk-config --ldflags --use-images` //
 
 double one(double x){return 1;}
-
 double slope(double x){return x/2;}
 
 int main()
