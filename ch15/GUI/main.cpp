@@ -11,6 +11,7 @@ int main()
     Simple_window win {Point{100,100}, 600, 600, "Function graphs"};
 
     Point origo {300, 300};
+    
     constexpr int r_min = -10;
     constexpr int r_max = 11;
     constexpr int scale = 20;
