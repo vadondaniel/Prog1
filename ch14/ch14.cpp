@@ -1,5 +1,7 @@
 #include "std_lib_facilities.h"
 
+// g++ ch14.cpp -o ch14 //
+
 class P{
 public:
     virtual void pvf() = 0;

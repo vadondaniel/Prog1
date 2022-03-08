@@ -1,5 +1,7 @@
 #include "std_lib_facilities.h"
 
+// Compile: g++ ch15_2.cpp -o ch15_2
+
 struct Person{
 private:
 	string pfname;
