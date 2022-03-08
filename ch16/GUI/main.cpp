@@ -1,19 +1,8 @@
-//#include "Lines_window.h"
 #include "Graph.h"
 #include "GUI.h"
-
 using namespace Graph_lib;
 
 //g++ main.cpp Graph.cpp Window.cpp GUI.cpp Simple_window.cpp -o main `fltk-config --ldflags --use-images`
-
-/* 
-int main()
-{
-    Lines_window win {Point{100,100}, 1920, 1080, "Lines"};
-    
-    return gui_main();
-} 
-*/
 
 struct Lines_window : Graph_lib::Window {
     Lines_window(Point xy, int w, int h, const string& title );
@@ -24,17 +13,24 @@ private:
     Button next_button;
     Button quit_button;
     Button menu_button;
+    Button style_button;
     In_box next_x;
     In_box next_y;
     Out_box xy_out;
     Menu color_menu;
+    Menu style_menu;
 
     void change(Color c) { lines.set_color(c); }
     void hide_menu() { color_menu.hide(); menu_button.show(); }
+    void hide_stlye() { style_menu.hide(); style_button.show(); }
     void red_pressed() { change(Color::red); hide_menu(); }
     void blue_pressed() { change(Color::blue); hide_menu(); }
     void black_pressed() { change(Color::black); hide_menu(); }
+    void solid_pressed() { change(Line_style::solid); hide_menu(); }
+    void dash_pressed() { change(Line_style::dash); hide_menu(); }
+    void dot_pressed() { change(Line_style::dot); hide_menu(); }
     void menu_pressed() { menu_button.hide(); color_menu.show(); }
+    void style_pressed() { style_button.hide(); style_menu.show(); }
     void next();
     void quit();
 
@@ -48,7 +44,9 @@ Lines_window::Lines_window(Point xy, int w, int h, const string& title)
     next_y{Point{x_max()-210,0}, 50, 20, "next y:"},
     xy_out{Point{100,0}, 100, 20, "current (x,y):"},
     color_menu{Point{x_max()-70,30},70,20,Menu::vertical,"color"},
-    menu_button{Point{x_max()-80,30}, 80, 20, "color menu", [] (Address, Address pw) {reference_to<Lines_window>(pw).menu_pressed();}}
+    menu_button{Point{x_max()-80,30}, 80, 20, "color menu", [] (Address, Address pw) {reference_to<Lines_window>(pw).menu_pressed();}},
+    style_menu{Point{x_max()-70,60},70,20,Menu::vertical,"style"},
+    style_button{Point{x_max()-80,60}, 80, 20, "style menu", [] (Address, Address pw) {reference_to<Lines_window>(pw).style_pressed();}}
 {
     attach(next_button);
     attach(quit_button);
@@ -62,6 +60,12 @@ Lines_window::Lines_window(Point xy, int w, int h, const string& title)
     attach(color_menu);
     color_menu.hide();
     attach(menu_button);
+    style_menu.attach(new Button{Point{0,0},0,0,"solid", [] (Address, Address pw) {reference_to<Lines_window>(pw).solid_pressed();}});
+    style_menu.attach(new Button{Point{0,0},0,0,"dash", [] (Address, Address pw) {reference_to<Lines_window>(pw).dash_pressed();}});
+    style_menu.attach(new Button{Point{0,0},0,0,"dot", [] (Address, Address pw) {reference_to<Lines_window>(pw).dot_pressed();}});
+    attach(style_menu);
+    style_menu.hide();
+    attach(style_button);
     attach(lines);
 }
 
