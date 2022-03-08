@@ -21,14 +21,15 @@ private:
     Menu style_menu;
 
     void change(Color c) { lines.set_color(c); }
+    void changes(Line_style s) { lines.set_style(s); }
     void hide_menu() { color_menu.hide(); menu_button.show(); }
-    void hide_stlye() { style_menu.hide(); style_button.show(); }
+    void hide_style() { style_menu.hide(); style_button.show(); }
     void red_pressed() { change(Color::red); hide_menu(); }
     void blue_pressed() { change(Color::blue); hide_menu(); }
     void black_pressed() { change(Color::black); hide_menu(); }
-    void solid_pressed() { change(Line_style::solid); hide_menu(); }
-    void dash_pressed() { change(Line_style::dash); hide_menu(); }
-    void dot_pressed() { change(Line_style::dot); hide_menu(); }
+    void solid_pressed() { changes(Line_style::solid); hide_style(); }
+    void dash_pressed() { changes(Line_style::dash); hide_style(); }
+    void dot_pressed() { changes(Line_style::dot); hide_style(); }
     void menu_pressed() { menu_button.hide(); color_menu.show(); }
     void style_pressed() { style_button.hide(); style_menu.show(); }
     void next();
@@ -45,8 +46,8 @@ Lines_window::Lines_window(Point xy, int w, int h, const string& title)
     xy_out{Point{100,0}, 100, 20, "current (x,y):"},
     color_menu{Point{x_max()-70,30},70,20,Menu::vertical,"color"},
     menu_button{Point{x_max()-80,30}, 80, 20, "color menu", [] (Address, Address pw) {reference_to<Lines_window>(pw).menu_pressed();}},
-    style_menu{Point{x_max()-70,60},70,20,Menu::vertical,"style"},
-    style_button{Point{x_max()-80,60}, 80, 20, "style menu", [] (Address, Address pw) {reference_to<Lines_window>(pw).style_pressed();}}
+    style_menu{Point{x_max()-160,30},70,20,Menu::vertical,"style"},
+    style_button{Point{x_max()-170,30}, 80, 20, "style menu", [] (Address, Address pw) {reference_to<Lines_window>(pw).style_pressed();}}
 {
     attach(next_button);
     attach(quit_button);
