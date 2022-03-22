@@ -10,12 +10,12 @@ private:
 
 public:
 
-	explicit S(T vv = 0) : val{vv} {}
+	explicit S(T v = 0) : val{v} {}
 
 	S& operator = (const T&);
 	T& get();
 	const T& get() const;
-	void set(T x){val=x;}
+	void set(T value){val=value;}
 };
 
 template<typename T>
@@ -30,25 +30,25 @@ const T& S<T>::get() const {
 
 //"bonus thing"
 template<typename T>
-ostream& operator<<(ostream& os, vector<T>& v){
-	for(int i=0;i<v.size();i++){
-		os<<v[i]<<" ";
+ostream& operator<<(ostream& os, vector<T>& vec){
+	for(int i=0;i<vec.size();i++){
+		os<<vec[i]<<" ";
 	}
 	return os;
 }
 
 template<typename T>
-istream& operator>>(istream& is, vector<T>& v){
-	char c = 0;
-	is>>c;
-	if(c!='{'){
-		error("Invalid vector format");
+istream& operator>>(istream& is, vector<T>& vec){
+	char ch = 0;
+	is>>ch;
+	if(ch!='{'){
+		error("Vector format invalid");
 		return is;
 	}
 	for(T val; is>>val;){
-		v.push_back(val);
-		is>>c;
-		if(c=='}'){break;}
+		vec.push_back(val);
+		is>>ch;
+		if(ch=='}'){break;}
 	}
 	return is;
 }
@@ -60,7 +60,7 @@ void read_val(T& v){
 
 int main(){
 
-    S<int> s_int {69};
+    S<int> s_int {0};
 	S<char> s_char {'a'};
 	S<double> s_double {6.9};
 	S<string> s_string {"a string"};
