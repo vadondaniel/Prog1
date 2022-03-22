@@ -60,48 +60,51 @@ void read_val(T& v){
 
 int main(){
 
+//initial values
     S<int> s_int {0};
-	S<char> s_char {'a'};
-	S<double> s_double {6.9};
-	S<string> s_string {"a string"};
-	S<vector<int>> s_vector {vector<int>{4,2,0}};
-
     cout<<s_int.get()<<endl;
+
+	S<char> s_char {'a'};
 	cout<<s_char.get()<<endl;
+
+	S<double> s_double {6.9};
 	cout<<s_double.get()<<endl;
+
+	S<string> s_string {"a string"};
 	cout<<s_string.get()<<endl;
+
+	S<vector<int>> s_vector {vector<int>{4,2,0}};
 	cout<<s_vector.get()<<endl;
 
-	int x;
+//custom set values
+	int in;
 	cout<<"Intiger: ";
-	read_val(x);
-	s_int.set(x);
-
-	char y;
-	cout<<"Caracter: ";
-	read_val(y);
-	s_char.set(y);
-
-	double d;
-	cout<<"Double: ";
-	read_val(d);
-	s_double.set(d);
-
-	string s;
-	cout<<"String: ";
-	read_val(s);
-	s_string.set(s);
-
-	vector<int> v;
-	cout<<"Vector (format: {number,number,...}): ";
-	read_val(v);
-	s_vector.set(v);
-	
-
+	read_val(in);
+	s_int.set(in);
 	cout<<s_int.get()<<endl;
+
+	char ch;
+	cout<<"Caracter: ";
+	read_val(ch);
+	s_char.set(ch);
 	cout<<s_char.get()<<endl;
+
+	double du;
+	cout<<"Double: ";
+	read_val(du);
+	s_double.set(du);
 	cout<<s_double.get()<<endl;
+
+	string st;
+	cout<<"String: ";
+	read_val(st);
+	s_string.set(st);
 	cout<<s_string.get()<<endl;
+
+	vector<int> ve;
+	cout<<"Vector (format: {number,number,...}): ";
+	read_val(ve);
+	s_vector.set(ve);
 	cout<<s_vector.get()<<endl;
 
     return 0;
