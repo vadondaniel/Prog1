@@ -1,0 +1,10 @@
+Galaxy-A52S 1 125000
+Galaxy-S20FE 2 155000
+Galaxy-A8 3 75000
+Galaxy-A51 4 110000
+Galaxy-Sduos2 5 40000
+GT-S5230 6 20000
+Galaxy-Mini 7 34000
+Galaxy-A3 8 65000
+Galaxy-S22 9 320000
+Galaxy-S8 10 90000
